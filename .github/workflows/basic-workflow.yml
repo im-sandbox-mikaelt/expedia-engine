@@ -41,7 +41,7 @@ jobs:
         run: echo Hello, from the PR!!
 
   deployment:
-    runs-on: ubuntu-latest
+    runs-on: [Production2]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
