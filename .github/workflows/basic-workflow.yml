@@ -48,6 +48,7 @@ jobs:
         with:
           repository: 'im-sandbox-mikaelt/hello-expedia4-composite-action'
           path: ./.github/actions/hello-expedia4-composite-action
+          token: $ {{ secrets.GH_TOKEN }}
       
       - id: foo
         name: Use a Composite Action
