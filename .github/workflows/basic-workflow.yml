@@ -42,8 +42,19 @@ jobs:
 
   deployment:
     runs-on: ubuntu-latest
-    environment: DEV
     steps:
-      - name: deploy sim
-        run: echo Hello, from the Deployment!!
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          repository: 'im-sandbox-mikaelt/hello-expedia4-composite-action'
+          path: ./.github/actions/hello-expedia4-composite-action
+      
+      - id: foo
+        name: Use a Composite Action
+        uses: ./.github/actions/hello-expedia4-composite-action
+        with:
+          who-to-greet: 'Mona the Octocat with Expedia'
+          
+      - run: echo randomNumber ${{ steps.foo.outputs.random-number }}
+        shell: bash
         # ...deployment-specific steps
